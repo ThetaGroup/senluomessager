@@ -1,0 +1,13 @@
+#container{
+    position:relative; width:600px; height:431px; border:1px solid #CCC; overflow:hidden;
+}
+#map{
+    position:absolute;
+}
+.mark{
+    position:absolute; width:30px; height:38px; font-size:0px; 
+}
+
+.mark:hover{
+	position:absolute; width:30px; height:38px; font-size:0px; 
+}
