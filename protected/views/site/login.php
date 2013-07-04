@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 ?>
 
 <h1>登录</h1>
-
+2bma
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
