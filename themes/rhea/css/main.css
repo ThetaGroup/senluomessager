@@ -2,6 +2,86 @@
 #l-map{height:100%;width:78%;float:left;border-right:2px solid #bcbcbc;}
 #r-result{height:100%;width:20%;float:left;}
 
+.cover{
+	position:fixed;
+	width:100%;
+	height:100%;
+	background:black;
+	opacity:0.8;
+	z-index:0;
+}
+
+.minibutton{
+	position: relative;
+	display: inline-block;
+	padding: 7px 15px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #333;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+	white-space: nowrap;
+	background-color: #eaeaea;
+	background-image: -moz-linear-gradient(#fafafa, #eaeaea);
+	background-image: -webkit-linear-gradient(#fafafa, #eaeaea);
+	background-image: linear-gradient(#fafafa, #eaeaea);
+	background-repeat: repeat-x;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	border-bottom-color: #c5c5c5;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-appearance: none;
+}
+
+.auth-form{
+	z-index:2;
+	width:300px;
+	margin:60px auto;
+}
+
+.auth-form form{
+	z-index:2;
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.075);
+}
+
+.auth-form-header{
+	z-index:2;
+	position: relative;
+	padding: 10px 20px;
+	margin: 0;
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
+	background-color: #6c8393;
+	background-image: -moz-linear-gradient(#7f95a5, #6c8393);
+	background-image: -webkit-linear-gradient(#7f95a5, #6c8393);
+	background-image: linear-gradient(#7f95a5, #6c8393);
+	background-repeat: repeat-x;
+	border: 1px solid #6e8290;
+	border-bottom-color: #586873;
+	border-radius: 4px 4px 0 0;
+}
+
+.auth-form-body{
+	z-index:2;
+	position:relative;
+	padding: 20px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 14px;
+	background-color: #fff;
+	border: 1px solid #d8dee2;
+	border-top-color: white;
+	border-radius: 0 0 4px 4px;
+}
+
 body
 {
 	margin: 0;
@@ -19,7 +99,7 @@ body
 }
 
 #page
-{
+{		
 	margin-top: -10px;
 	padding-top: 10px;
 	margin-bottom: 5px;
@@ -136,7 +216,7 @@ div.flash-success a
 	color:#264409;
 }
 
-div.form .rememberMe label
+.auth-form-body .rememberMe label
 {
 	display: inline;
 }
@@ -256,7 +336,7 @@ div.search-form
 	color: #555;
 	background-color: #FFF;
 	margin: 20px;
-    width: 870px;
+    width: 870px;    
 }
 
 
@@ -302,4 +382,158 @@ div.search-form
     -moz-box-shadow:0 0 3px #000000;
    -webkit-box-shadow:0 0 3px #000000;
    box-shadow:0 0 3px #000000;	
+}
+
+
+
+
+
+
+.auth-form-body input,
+.auth-form-body textarea,
+.auth-form-body select
+{
+	z-index:2;
+	margin: 0.2em 0 0.5em 0;
+}
+
+.auth-form-body input[type="text"],
+.auth-form-body input[type="password"]{
+	z-index:2;
+	width:100%;
+}
+
+.auth-form-body fieldset
+{
+	z-index:2;
+	border: 1px solid #DDD;
+	padding: 10px;
+	margin: 0 0 10px 0;
+    -moz-border-radius:7px;
+}
+
+.auth-form-body label
+{
+	z-index:2;
+	font-weight: bold;
+	font-size: 0.9em;
+	display: block;
+}
+
+.auth-form-body .row
+{
+	z-index:2;
+	margin: 5px 0;
+}
+
+.auth-form-body .hint
+{
+	z-index:2;
+	margin: 0;
+	padding: 0;
+	color: #999;
+}
+
+.auth-form-body .note
+{
+	z-index:2;
+	font-style: italic;
+}
+
+.auth-form-body span.required
+{
+	z-index:2;	
+	color: red;
+}
+
+.auth-form-body div.error label:first-child,
+.auth-form-body label.error,
+.auth-form-body span.error
+{
+	z-index:2;
+	color: #C00;
+}
+
+.auth-form-body div.error input,
+.auth-form-body div.error textarea,
+.auth-form-body div.error select,
+.auth-form-body input.error,
+.auth-form-body textarea.error,
+.auth-form-body select.error
+{
+	z-index:2;
+	background: #FEE;
+	border-color: #C00;
+}
+
+.auth-form-body div.success input,
+.auth-form-body div.success textarea,
+.auth-form-body div.success select,
+.auth-form-body input.success,
+.auth-form-body textarea.success,
+.auth-form-body select.success
+{
+	z-index:2;
+	background: #E6EFC2;
+	border-color: #C6D880;
+}
+
+.auth-form-body div.success label
+{
+	z-index:2;
+	color: inherit;
+}
+
+.auth-form-body .errorSummary
+{
+	z-index:2;
+	border: 2px solid #C00;
+	padding: 7px 7px 12px 7px;
+	margin: 0 0 20px 0;
+	background: #FEE;
+	font-size: 0.9em;
+}
+
+.auth-form-body .errorMessage
+{
+	z-index:2;
+	color: red;
+	font-size: 0.9em;
+}
+
+.auth-form-body .errorSummary p
+{
+	z-index:2;
+	margin: 0;
+	padding: 5px;
+}
+
+.auth-form-body .errorSummary ul
+{
+	z-index:2;
+	margin: 0;
+	padding: 0 0 0 20px;
+}
+
+.auth-form-body.wide.form label
+{
+	z-index:2;
+	float: left;
+	margin-right: 10px;
+	position: relative;
+	text-align: right;
+	width: 100px;
+}
+
+.auth-form-body.wide.form .row
+{
+	z-index:2;
+	clear: left;
+}
+
+.auth-form-body.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
+{
+	z-index:2;
+	clear: left;
+	padding-left: 110px;
 }

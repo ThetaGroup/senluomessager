@@ -20,8 +20,13 @@
 
 <body>
 
-<div class="container" id="page">
+	<?php
+		if (Yii::app()->user->isGuest){
+			echo "<div class=\"cover\"></div>";
+		}
+	?>
 
+<div class="container" id="page">
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->

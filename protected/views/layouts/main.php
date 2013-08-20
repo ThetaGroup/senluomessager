@@ -20,6 +20,8 @@
 
 <body>
 
+<div class="cover"></div>
+
 <div class="container" id="page">
 
 	<div id="header">
