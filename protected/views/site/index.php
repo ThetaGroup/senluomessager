@@ -5,60 +5,93 @@
 	Yii::app()->clientScript->registerCoreScript('jquery');
 ?>
 
-<h1>欢迎使用 <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<div id="welcome-title">
+	<!--<h1>欢迎使用 <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>-->
+</div>
 
 <form id="sender" action="<?php echo Yii::app()->request->baseUrl;?>/index.php?r=site/sending" method="post">
-	<div id="textport" style="border-style: dotted;border-width: 2px;width:50%;border-color: #004F7A;">
-		<input type="radio" name="bodytype" value="textbody" checked="checked" id="textbodyradio"/>自定义指令
-		<input type="radio" name="bodytype" value="batchbody" id="batchbodyradio"/>终端控制指令
-		<br/>
-		短信内容:
-		<?php
-			echo CHtml::dropDownlist(
-				'body',
-				'',
-				CHtml::listData(
-					Batch::model()->findAll(),
+	<div id="textport" class="work-form-1">
+		<div class="work-form-header">			
+		</div>
+		<div class="work-form-body">
+			<input type="radio" name="bodytype" value="batchbody" id="batchbodyradio"/>终端控制指令
+			<input type="radio" name="bodytype" value="textbody" checked="checked" id="textbodyradio"/>自定义指令
+			<br/>
+			短信内容:
+			<?php
+				echo CHtml::dropDownlist(
 					'body',
-					'batchname'
-				),
-				array(
-					'id'=>'batchname'
-				)
-				);
-		?>
-		<input type="text" name="body" id="textbody"/>
-	</div>
-	
-	<br/>
-	
-	<div id="numport" style="border-style: dotted;border-width: 2px;width:75%;border-color: #004F7A;">
-		<input type="radio" name="addrtype" id="numaddr" value="numaddr" checked="checked"/>自定义终端
-		<input type="radio" name="addrtype" id="mapaddr" value="mapaddr"/>预定义终端
-		<br/>
-		发送号码:
-		<input type="text" name="sendto" id="sendto" readonly="readonly"/>
-		<div id="numdiv">
-			输入号码:
-			<input type="text" name="inum" id="inum"/>
-			<div id="inumbts">
-				<input type="button" id="inumadd" value="添加"/>
-				<input type="button" id="inumreset" value="重置"/>
-			</div>
-		</div>
-		<div id="mapdiv">
-			<div id="container">
-	    		<div id="map">
-	        		<img src="<?php echo Yii::app()->request->baseUrl;?>/images/1.jpg" />
-	    		</div>
-			</div>
-			<br />
+					'',
+					CHtml::listData(
+						Batch::model()->findAll(),
+						'body',
+						'batchname'
+					),
+					array(
+						'id'=>'batchname'
+					)
+					);
+			?>
+			<input type="text" name="body" id="textbody"/>
 		</div>
 	</div>
 	
 	<br/>
 	
-	<input type="submit" id="sendbt" value="发送"></input>
+	<div id="numport" class="work-form">
+		<div class="work-form-header"></div>
+		<div class="work-form-body">
+			<input type="radio" name="addrtype" id="mapaddr" value="mapaddr"/>预定义终端(地图)
+			<input type="radio" name="addrtype" id="gridaddr" value="gridaddr"/>预定义终端 (表格)
+			<input type="radio" name="addrtype" id="numaddr" value="numaddr" checked="checked"/>自定义终端
+			<br/>
+			发送号码:
+			<input type="text" name="sendto" id="sendto" readonly="readonly"/>
+			<div id="numdiv">
+				输入号码:
+				<input type="text" name="inum" id="inum"/>
+				<div id="inumbts">
+					<input type="button" id="inumadd" value="添加"/>
+					<input type="button" id="inumreset" value="重置"/>
+				</div>
+			</div>
+			<div id="mapdiv">
+				<div id="container">
+		    		<div id="map">
+		        		<img src="<?php echo Yii::app()->request->baseUrl;?>/images/1.jpg" />
+		    		</div>
+				</div>
+				<br />
+			</div>
+			
+			<div id="griddiv">
+				<?php
+					$map=new Map;
+					$this->widget('zii.widgets.grid.CGridView',array(
+						'id'=>'grid-div',
+						'dataProvider'=>$map->search(),						
+						'columns'=>array(
+							'id',
+							'name',
+							'tel',
+							array(
+								'class'=>'CCheckBoxColumn',
+								'selectableRows'=>127,		
+								'value'=>'$data->tel',						
+								'checkBoxHtmlOptions'=>array(									
+									'name'=>'gridcheckbox',									
+								),																		
+							),							
+						),						
+					));
+				?>
+			</div>
+		</div>
+	</div>
+	
+	<br/>
+	
+	<input type="submit" id="sendbt" class="minibutton" value="发送"></input>
 </form>
 
 <script type="text/javascript">
@@ -89,9 +122,17 @@
 	$("#numaddr").click(function(){
 		inputShow("numdiv");
 		inputHide("mapdiv");
+		inputHide("griddiv");
 	});
 	$("#mapaddr").click(function(){
 		inputShow("mapdiv");
+		inputHide("numdiv");
+		inputHide("griddiv");
+	});
+	
+	$("#gridaddr").click(function(){
+		inputShow("griddiv");
+		inputHide("mapdiv");
 		inputHide("numdiv");
 	});
 	
@@ -113,6 +154,40 @@
 	});
 	$("#inumreset").click(function(){
 		$("#sendto").val("");
+	});
+	
+	$("#mapaddr").click();
+	$("#batchbodyradio").click();
+	
+	$("input:checkbox[name='gridcheckbox']").each(function(i,item){
+		$(item).change(function(){
+			var sendvalue="";
+			$("input:checkbox[name=\"gridcheckbox\"]").each(function(i,item){
+				if ($(item).attr("checked"))
+					if (sendvalue==''){
+						sendvalue+=$(item).attr("value");
+					}else{
+						sendvalue+=","+$(item).attr("value");
+					}
+			});
+			$("#sendto").val(sendvalue);
+		});
+	});
+	
+	$("#grid-div_c3_all").change(function(){
+		if ($("#grid-div_c3_all").attr("checked")){
+			var sendvalue="";
+			$("input:checkbox[name=\"gridcheckbox\"]").each(function(i,item){				
+				if (sendvalue==''){
+					sendvalue+=$(item).attr("value");
+				}else{
+					sendvalue+=","+$(item).attr("value");
+				}
+			});
+			$("#sendto").val(sendvalue);
+		}else{
+			$("#sendto").val('');
+		}
 	});
 // 	
 	// $("#sendbt").attr("disabled","disabled");
