@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /* @var $this SiteController */
 
 	$this->pageTitle=Yii::app()->name;
@@ -15,9 +15,9 @@
 		</div>
 		<div class="work-form-body">
 			<input type="radio" name="bodytype" value="batchbody" id="batchbodyradio"/>终端控制指令
-			<input type="radio" name="bodytype" value="textbody" checked="checked" id="textbodyradio"/>自定义指令
+			<!--<input type="radio" name="bodytype" value="textbody" checked="checked" id="textbodyradio"/>自定义指令-->
 			<br/>
-			短信内容:
+			指令内容:
 			<?php
 				echo CHtml::dropDownlist(
 					'body',
@@ -43,7 +43,7 @@
 		<div class="work-form-body">
 			<input type="radio" name="addrtype" id="mapaddr" value="mapaddr"/>预定义终端(地图)
 			<input type="radio" name="addrtype" id="gridaddr" value="gridaddr"/>预定义终端 (表格)
-			<input type="radio" name="addrtype" id="numaddr" value="numaddr" checked="checked"/>自定义终端
+			<!--<input type="radio" name="addrtype" id="numaddr" value="numaddr" checked="checked"/>自定义终端-->
 			<br/>
 			发送号码:
 			<input type="text" name="sendto" id="sendto" readonly="readonly"/>
@@ -71,17 +71,35 @@
 						'id'=>'grid-div',
 						'dataProvider'=>$map->search(),						
 						'columns'=>array(
-							'id',
-							'name',
-							'tel',
 							array(
 								'class'=>'CCheckBoxColumn',
 								'selectableRows'=>127,		
 								'value'=>'$data->tel',						
 								'checkBoxHtmlOptions'=>array(									
 									'name'=>'gridcheckbox',									
-								),																		
-							),							
+								),
+							),
+							array(
+								'name'=>'id',
+								'value'=>'$data->id',
+								'htmlOptions'=>array(
+									'style'=>'text-align:center',
+								)
+							),
+							array(
+								'name'=>'终端名称',
+								'value'=>'$data->name',
+								'htmlOptions'=>array(
+									'style'=>'text-align:center',
+								)
+							),
+							array(
+								'name'=>'终端号码',
+								'value'=>'$data->tel',
+								'htmlOptions'=>array(
+									'style'=>'text-align:center',
+								)
+							)																					
 						),						
 					));
 				?>
