@@ -58,7 +58,7 @@
 			<div id="mapdiv">
 				<div id="container">
 		    		<div id="map">
-		        		<img src="<?php echo Yii::app()->request->baseUrl;?>/images/1.jpg" />
+		        		<img src="<?php echo Yii::app()->request->baseUrl;?>/images/1.jpg"/>
 		    		</div>
 				</div>
 				<br />
@@ -123,17 +123,32 @@
 		inputShow("numdiv");
 		inputHide("mapdiv");
 		inputHide("griddiv");
+		$("#sendto").val('');
+		clearMark();
+		loadMark();
+		$("input:checkbox[name='gridcheckbox']").each(function(i,item){
+			$(item).attr("checked",false);
+		});
+		$("#grid-div_c3_all").attr("checked",false);
 	});
 	$("#mapaddr").click(function(){
 		inputShow("mapdiv");
 		inputHide("numdiv");
 		inputHide("griddiv");
+		$("#sendto").val('');
+		$("input:checkbox[name='gridcheckbox']").each(function(i,item){
+			$(item).attr("checked",false);
+		});
+		$("#grid-div_c3_all").attr("checked",false);
 	});
 	
 	$("#gridaddr").click(function(){
 		inputShow("griddiv");
 		inputHide("mapdiv");
 		inputHide("numdiv");
+		$("#sendto").val('');
+		clearMark();
+		loadMark();	
 	});
 	
 	inputHide("mapdiv");
