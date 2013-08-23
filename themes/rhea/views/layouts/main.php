@@ -40,6 +40,7 @@
 				array('label'=>'终端预定义','url'=>array('/map/admin')),
 				array('label'=>'用户','url'=>array('/user/admin')),				
 				//array('label'=>'角色','url'=>array('/role/admin')),
+				array('label'=>'系统日志','url'=>array('/log/admin')),
 				array('label'=>'系统设置','url'=>array('/settings/admin')),
 				array('label'=>'登录', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'登出('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

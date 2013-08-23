@@ -11,12 +11,13 @@
 
 <form id="sender" action="<?php echo Yii::app()->request->baseUrl;?>/index.php?r=site/sending" method="post">
 	<div id="textport" class="work-form-1">
-		<div class="work-form-header">			
+		<div class="work-form-header">
+			<b>终端控制指令</b>		
 		</div>
 		<div class="work-form-body">
-			<input type="radio" name="bodytype" value="batchbody" id="batchbodyradio"/>终端控制指令
+			<input type="radio" name="bodytype" value="batchbody" id="batchbodyradio" style="display:none"/><!--终端控制指令-->
 			<!--<input type="radio" name="bodytype" value="textbody" checked="checked" id="textbodyradio"/>自定义指令-->
-			<br/>
+			<!--<br/>-->
 			指令内容:
 			<?php
 				echo CHtml::dropDownlist(
@@ -39,12 +40,14 @@
 	<br/>
 	
 	<div id="numport" class="work-form">
-		<div class="work-form-header"></div>
+		<div class="work-form-header">
+			<b>预定义终端</b>
+		</div>
 		<div class="work-form-body">
-			<input type="radio" name="addrtype" id="mapaddr" value="mapaddr"/>预定义终端(地图)
-			<input type="radio" name="addrtype" id="gridaddr" value="gridaddr"/>预定义终端 (表格)
+			<input type="radio" name="addrtype" id="mapaddr" value="mapaddr"/>地图格式
+			<input type="radio" name="addrtype" id="gridaddr" value="gridaddr"/>表格格式
 			<!--<input type="radio" name="addrtype" id="numaddr" value="numaddr" checked="checked"/>自定义终端-->
-			<br/>
+			<!--<br/>-->			
 			发送号码:
 			<input type="text" name="sendto" id="sendto" readonly="readonly"/>
 			<div id="numdiv">

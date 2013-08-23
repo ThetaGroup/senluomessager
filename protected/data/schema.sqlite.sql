@@ -46,3 +46,10 @@ CREATE TABLE sm_map(
     lat DOUBLE NOT NULL,
     tel VARCHAR(20) NOT NULL
 );
+
+CREATE TABLE sm_log(
+	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	log_time TimeStamp NOT NULL,
+	log_content VARCHAR(128) NOT NULL,
+	log_state VARCHAR(128) NOT NULL
+)
