@@ -32,7 +32,7 @@ class LogController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','createlog'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -169,5 +169,13 @@ class LogController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	
+	public function actionCreatelog(){
+		$log=new Log;
+		$log->log_time=time();
+		$log->log_content=$_GET['content'];
+		$log->log_state=$_GET['state'];
+		$log->save();
 	}
 }

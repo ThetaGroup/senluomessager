@@ -65,7 +65,7 @@ class Log extends CActiveRecord
 			'id' => 'ID',
 			'log_time' => '记录时间',
 			'log_content' => '记录内容',
-			'log_state' => '记录装填',
+			'log_state' => '记录状态',
 		);
 	}
 

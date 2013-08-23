@@ -46,11 +46,14 @@ or <b>=</b>)等符号来完善您的搜索条件.
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'log_time',
+		array(
+			'name'=>'log_time',
+			'value'=>'date("Y-m-d H:i:s",$data->log_time)',
+		),
 		'log_content',
 		'log_state',
-		// array(
-			// 'class'=>'CButtonColumn',
-		// ),
+		 //array(
+		 //	 'class'=>'CButtonColumn',
+		 //),
 	),
 )); ?>
