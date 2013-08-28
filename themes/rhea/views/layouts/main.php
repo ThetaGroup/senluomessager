@@ -28,6 +28,7 @@
 
 <div class="container" id="page">
 	<div id="header">
+		<div id="logoimg"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/ccad.png"/></div>
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 

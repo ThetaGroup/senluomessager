@@ -186,7 +186,13 @@ body
 #logo
 {
 	padding: 40px 20px;
-	font-size: 200%;
+	font-size: 350%;
+	vertical-align:middle;
+	
+}
+
+#logoimg{
+	float:left;
 }
 
 #mainmenu

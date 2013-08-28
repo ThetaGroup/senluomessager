@@ -139,6 +139,7 @@
 	$("#batchname").change(function(){
 		$("#textbody").val($("#batchname option:selected").val());
 	});
+	$("#textbody").val($("#batchname option:selected").val());
 	
 	$("#numaddr").click(function(){
 		inputShow("numdiv");
