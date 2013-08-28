@@ -18,7 +18,7 @@ function addMark(p, x, y, index){
     newMark.attr("id","mark"+index);
     newMark.css("left",x+"px");
     newMark.css("top",y+"px");
-    newMark.css("background-image","url(css/pin.png)");
+    newMark.css("background-image","url(css/rpin.png)");
     $("#container").append(newMark);
     
 }
@@ -29,7 +29,7 @@ function setHover(mp){
 			mp.css("background-image","url(css/gpin.png)");
 		},
 		function(){
-			mp.css("background-image","url(css/pin.png)");
+			mp.css("background-image","url(css/rpin.png)");
 		}
 	)	
 }
@@ -51,13 +51,13 @@ function addOldMark(idx,item){
 	newOldMark.attr("id","oldMark"+idx);
 	newOldMark.css("left",item.lng+"px");
 	newOldMark.css("top",item.lat+"px");
-	newOldMark.css("background-image","url(css/pin.png)");
+	newOldMark.css("background-image","url(css/rpin.png)");
 	setHover(newOldMark);
 	checked[idx]=false;
 	
 	newOldMark.click(function(){
 			if (checked[idx]){
-				newOldMark.css("background-image","url(css/pin.png)");
+				newOldMark.css("background-image","url(css/rpin.png)");
 				setHover(newOldMark);
 				checked[idx]=false;
 			}else{
