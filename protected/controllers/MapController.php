@@ -152,6 +152,7 @@ class MapController extends Controller
 			$ele['lng']=$record['lng'];
 			$ele['lat']=$record['lat'];
 			$ele['tel']=$record['tel'];
+			$ele['state']=$record['state'];
 			array_push($arr,$ele);
 		}
 		$json=json_encode($arr);
@@ -174,6 +175,26 @@ class MapController extends Controller
 		$this->render('addnode',array(
 			'model'=>$model,
 		));
+	}
+	
+	public function actionChangeState(){
+		$tel=$_GET['tels'];
+		$body=$_GET['body'];
+		$changed=false;
+		if ($body=="IOOP6,2"){
+			$state=null;
+			$changed=true;
+		}else if ($body=="IOOP7,2"){
+			$state=1;
+			$changed=true;
+		}
+		if ($changed){
+			Map::model()->updateAll(
+				array('state'=>$state),
+				'tel=:tel',
+				array(':tel'=>$tel)
+			);
+		}
 	}
 	
 	public function actionTest()

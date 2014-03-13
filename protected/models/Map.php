@@ -9,6 +9,7 @@
  * @property double $lng
  * @property double $lat
  * @property string $tel
+ * @property integer $state
  */
 class Map extends CActiveRecord
 {

@@ -24,6 +24,7 @@ function addMark(p, x, y, index){
 }
 
 function setHover(mp){
+	/*No hover setting yet.
 	mp.hover(
 		function(){
 			mp.css("background-image","url(css/gpin.png)");
@@ -32,9 +33,11 @@ function setHover(mp){
 			mp.css("background-image","url(css/rpin.png)");
 		}
 	)	
+	*/
 }
 
 function removeHover(mp){
+	/*No hover yet.
 	mp.hover(
 		function(){
 			mp.css("background-image","url(css/gpin.png)");
@@ -42,7 +45,8 @@ function removeHover(mp){
 		function(){
 			mp.css("background-image","url(css/gpin.png)");
 		}
-	)	
+	)
+	*/
 }
 
 function addOldMark(idx,item){
@@ -51,18 +55,22 @@ function addOldMark(idx,item){
 	newOldMark.attr("id","oldMark"+idx);
 	newOldMark.css("left",item.lng+"px");
 	newOldMark.css("top",item.lat+"px");
-	newOldMark.css("background-image","url(css/rpin.png)");
+	if (item.state==null){
+		newOldMark.css("background-image","url(css/rpin.png)");
+	}else{
+		newOldMark.css("background-image","url(css/gpin.png)");
+	}
 	setHover(newOldMark);
 	checked[idx]=false;
 	
 	newOldMark.click(function(){
 			if (checked[idx]){
-				newOldMark.css("background-image","url(css/rpin.png)");
-				setHover(newOldMark);
+				//newOldMark.css("background-image","url(css/rpin.png)");
+				//setHover(newOldMark);
 				checked[idx]=false;
 			}else{
-				newOldMark.css("background-image","url(css/gpin.png)");
-				removeHover(newOldMark);
+				//newOldMark.css("background-image","url(css/gpin.png)");
+				//removeHover(newOldMark);
 				checked[idx]=true;
 			}
 			if (typeof($("#sendto").val())!="undefined"){

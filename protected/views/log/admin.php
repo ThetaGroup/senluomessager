@@ -32,6 +32,7 @@ $('.search-form form').submit(function(){
 您可以在您的搜索值前方加入(<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>)等符号来完善您的搜索条件.
 <?php echo CHtml::link('高级搜索','#',array('class'=>'search-button')); ?>
+	<input type='button' value="打印" onclick="window.print();"/>
 </p>
 
 <div class="search-form" style="display:none">
