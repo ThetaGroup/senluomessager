@@ -37,9 +37,9 @@
 			'items'=>array(
 				array('label'=>'终端控制', 'url'=>array('/site/index')),				
 				//array('label'=>'短信','url'=>array('/sms/admin')),
-				array('label'=>'控制指令','url'=>array('/batch/admin')),
-				array('label'=>'终端预定义','url'=>array('/map/admin')),
-				array('label'=>'用户','url'=>array('/user/admin')),				
+				array('label'=>'指令设置','url'=>array('/batch/admin')),
+				array('label'=>'终端设置','url'=>array('/map/admin')),
+				array('label'=>'用户管理','url'=>array('/user/admin')),				
 				//array('label'=>'角色','url'=>array('/role/admin')),
 				array('label'=>'系统日志','url'=>array('/log/admin')),
 				array('label'=>'系统设置','url'=>array('/settings/admin')),

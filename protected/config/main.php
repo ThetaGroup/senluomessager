@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
@@ -9,7 +9,7 @@ return array(
 	'language'=>'zh_cn',
 	'theme'=>'rhea',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'科右前旗人防办智能终端控制系统',
+	'name'=>'科右前旗人防智能终端控制系统',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

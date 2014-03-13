@@ -65,7 +65,7 @@ class Map extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '终端序号',
 			'name' => '终端名称',
 			'lng' => '横坐标',
 			'lat' => '纵坐标',

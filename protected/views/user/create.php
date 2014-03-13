@@ -16,3 +16,13 @@ $this->menu=array(
 <h1>添加用户</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+
+
+
+<?php
+	Yii::app()->clientScript->registerCoreScript('jquery');
+?>
+
+<script type="text/javascript">
+	$("#User_role").attr("readonly","readonly").val("0");
+</script>

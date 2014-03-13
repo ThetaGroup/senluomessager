@@ -3,7 +3,7 @@
 /* @var $model Map */
 
 $this->breadcrumbs=array(
-	'终端预定义'=>array('index'),
+	'终端设置'=>array('index'),
 	'终端管理',
 );
 
@@ -25,7 +25,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>预定义终端管理</h1>
+<h1>终端管理</h1>
 
 <p>
 您可以在您的搜索值前方加入(<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

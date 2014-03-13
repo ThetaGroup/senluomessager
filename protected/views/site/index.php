@@ -9,42 +9,12 @@
 	<!--<h1>欢迎使用 <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>-->
 </div>
 
-<form id="sender" action="<?php echo Yii::app()->request->baseUrl;?>/index.php?r=site/sending" method="post">
-	<div id="textport" class="work-form-1">
-		<div class="work-form-header">
-			<b>终端控制指令</b>		
-		</div>
-		<div class="work-form-body">
-			<input type="radio" name="bodytype" value="batchbody" id="batchbodyradio" style="display:none"/><!--终端控制指令-->
-			<!--<input type="radio" name="bodytype" value="textbody" checked="checked" id="textbodyradio"/>自定义指令-->
-			<!--<br/>-->
-			指令内容:
-			<?php
-				echo CHtml::dropDownlist(
-					'body',
-					'',
-					CHtml::listData(
-						Batch::model()->findAll(),
-						'body',
-						'batchname'
-					),
-					array(
-						'id'=>'batchname'
-					)
-					);
-			?>
-			<input type="text" name="body" id="textbody"/>
-		</div>
-	</div>
-	
-	<br/>
-	
+<form id="sender" action="<?php echo Yii::app()->request->baseUrl;?>/index.php?r=site/index" method="post">
 	<div id="numport" class="work-form">
 		<div class="work-form-header">
 			<b>预定义终端</b>
 		</div>
-		<div class="work-form-body">
-			<input type="radio" name="addrtype" id="mapaddr" value="mapaddr"/>地图格式
+		<div class="work-form-body">			<input type="radio" name="addrtype" id="mapaddr" value="mapaddr"/>地图格式
 			<input type="radio" name="addrtype" id="gridaddr" value="gridaddr"/>表格格式
 			<!--<input type="radio" name="addrtype" id="numaddr" value="numaddr" checked="checked"/>自定义终端-->
 			<!--<br/>-->			
@@ -109,10 +79,64 @@
 			</div>
 		</div>
 	</div>
+
+
+	<div id="textport" class="work-form-1">
+		<div class="work-form-header">
+			<b>终端控制指令</b>		
+		</div>
+		<div class="work-form-body">
+			<input type="radio" name="bodytype" value="batchbody" id="batchbodyradio" style="display:none"/><!--终端控制指令-->
+			<!--<input type="radio" name="bodytype" value="textbody" checked="checked" id="textbodyradio"/>自定义指令-->
+			<!--<br/>-->
+			指令内容:
+			<?php
+				echo CHtml::dropDownlist(
+					'body',
+					'',
+					CHtml::listData(
+						Batch::model()->findAll(),
+						'body',
+						'batchname'
+					),
+					array(
+						'id'=>'batchname'
+					)
+					);
+			?>
+			<input type="text" name="body" id="textbody"/>
+			<input type="submit" id="sendbt" class="minibutton" value="发送"></input>
+		</div>
+	</div>
 	
-	<br/>
+	<div id="feedbackport" class="work-form-2">
+		<div class="work-form-header">
+			<b>回视信息</b>
+		</div>
+		<div class="work-form-body">
+			<?php
+				if (isset($_POST["body"])){
+					$body=$_POST["body"];
+					$tels=$_POST["sendto"];
+					$com=settings::model()->findByAttributes(array('name'=>'COM'));	
+					$comStr="com=".$com->value;
+					$telsStr="tels=".$tels;
+					$bodyStr="body=".$body;
+					$getStr=$comStr."&".$telsStr."&".$bodyStr;
+				}else{
+					$getStr="";
+				}
+			?>
+
+			<iframe 
+				src="<?php echo Yii::app()->request->hostInfo;?>/phpsms/send.php?<?php echo $getStr;?>" 
+				width="100%" 
+				height="100%">
+			</iframe>
+		</div>
+	</div>
 	
-	<input type="submit" id="sendbt" class="minibutton" value="发送"></input>
+	
 </form>
 
 <script type="text/javascript">
