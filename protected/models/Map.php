@@ -46,6 +46,7 @@ class Map extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, lng, lat, tel', 'safe', 'on'=>'search'),
+			array('state','default','value'=>'0'),
 		);
 	}
 

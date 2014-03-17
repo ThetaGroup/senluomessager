@@ -181,10 +181,10 @@ class MapController extends Controller
 		$tel=$_GET['tels'];
 		$body=$_GET['body'];
 		$changed=false;
-		if ($body=="IOOP6,2"){
-			$state=null;
+		if ($body=="IOOP7,2"){
+			$state=0;
 			$changed=true;
-		}else if ($body=="IOOP7,2"){
+		}else if ($body=="IOOP6,2"){
 			$state=1;
 			$changed=true;
 		}

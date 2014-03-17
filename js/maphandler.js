@@ -55,7 +55,7 @@ function addOldMark(idx,item){
 	newOldMark.attr("id","oldMark"+idx);
 	newOldMark.css("left",item.lng+"px");
 	newOldMark.css("top",item.lat+"px");
-	if (item.state==null){
+	if (item.state==0){
 		newOldMark.css("background-image","url(css/rpin.png)");
 	}else{
 		newOldMark.css("background-image","url(css/gpin.png)");
