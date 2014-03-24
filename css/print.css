@@ -19,10 +19,16 @@ body {
 	background:none;
 	font-size:10pt;
 }
+
 .container {
 	background:none;
 	border:none;
 }
+
+#page .container{
+	border:none;	
+}
+
 hr {
 	background:#ccc;
 	color:#ccc;

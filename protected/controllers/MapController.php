@@ -180,12 +180,19 @@ class MapController extends Controller
 	public function actionChangeState(){
 		$tel=$_GET['tels'];
 		$body=$_GET['body'];
+		$state=0;
 		$changed=false;
 		if ($body=="IOOP7,2"){
 			$state=0;
 			$changed=true;
-		}else if ($body=="IOOP6,2"){
+		}else if (($body=="IOOP6,2")||($body=="IOOL0")){
 			$state=1;
+			$changed=true;
+		}else if (($body=="IOOH0")||($body=="IOOP1,2")){
+			$state=2;
+			$changed=true;
+		}else if (($body=="IOOP2,2")||($body=="IOOP3,2")||($body=="IOOP4,2")||($body=="IOOP5,2")){
+			$state=3;
 			$changed=true;
 		}
 		if ($changed){

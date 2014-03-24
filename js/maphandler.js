@@ -55,10 +55,21 @@ function addOldMark(idx,item){
 	newOldMark.attr("id","oldMark"+idx);
 	newOldMark.css("left",item.lng+"px");
 	newOldMark.css("top",item.lat+"px");
+	/*
+	 * 0:黑色
+	 * 1:橙色
+	 * 2:绿色
+	 * 3:红色闪烁
+	 */
+	newOldMark.css("background-image","url(css/bpin.png)");
 	if (item.state==0){
-		newOldMark.css("background-image","url(css/rpin.png)");
-	}else{
+		newOldMark.css("background-image","url(css/bpin.png)");
+	}else if (item.state==1){
+		newOldMark.css("background-image","url(css/opin.png)");
+	}else if (item.state==2){
 		newOldMark.css("background-image","url(css/gpin.png)");
+	}else if (item.state==3){
+		newOldMark.css("background-image","url(css/rpin.png)");
 	}
 	setHover(newOldMark);
 	checked[idx]=false;
